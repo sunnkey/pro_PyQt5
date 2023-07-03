@@ -1,1 +1,4 @@
-print('1')
+from PyQt5.Qt import *
+
+a = QLabel()
+a.show()
