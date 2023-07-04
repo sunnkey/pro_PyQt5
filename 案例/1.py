@@ -47,8 +47,11 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     window1 = Window()
+    window1.resize(1200, 1200)
     window2 = Window()
+    window2.resize(800, 800)
     window2.setParent(window1)
+
     window1.show()
     window2.show()
 
