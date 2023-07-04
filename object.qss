@@ -1,4 +1,18 @@
-QLabel{
+QLabel#notice{
     font-size: 20px;
+    color:black;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+QLabel#notice[leave="normal"]{
+    color: green;
+}
+
+QLabel#notice[leave="waring"]{
+    color: yellow;
+}
+
+QLabel#notice[leave="error"]{
     color: red;
 }

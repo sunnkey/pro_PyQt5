@@ -18,17 +18,38 @@ class Window(QWidget):
         self.test_q_object()
 
     def test_q_object(self):
+        with open('../object.qss') as f:
+            qApp.setStyleSheet(f.read())
         label1 = QLabel(self)
         label1.setText('第一个label')
+        label1.setObjectName('notice')
+        label1.setProperty('leave', 'normal')
+
         label2 = QLabel(self)
         label2.setText('第二个label')
-        label2.move(100, 0)
+        label2.move(150, 0)
+        label2.setObjectName('notice')
+        label2.setProperty('leave', 'waring')
+
+        label3 = QLabel(self)
+        label3.setText('第三个label')
+        label3.move(300, 0)
+        label3.setObjectName('notice')
+        label3.setProperty('leave', 'error')
+
+        btn1 = QPushButton(self)
+        btn1.move(0, 50)
+        btn1.setText('我是按钮1')
+        btn1.setObjectName('waring')
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    window = Window()
-    window.show()
+    window1 = Window()
+    window2 = Window()
+    window2.setParent(window1)
+    window1.show()
+    window2.show()
 
     sys.exit(app.exec())
