@@ -11,7 +11,23 @@ class Window(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
-        pass
+        self.make_btn()
+
+    @staticmethod
+    def slot_click_btn1(self):
+        print('改变名字1')
+
+    @staticmethod
+    def slot_click_btn2(self):
+        print('改变名字2')
+
+    def make_btn(self):
+        btn1 = QPushButton(self)
+        btn1.setText('点击按钮')
+        btn1.objectNameChanged.connect(self.slot_click_btn1)
+        btn1.objectNameChanged.connect(self.slot_click_btn2)
+        btn1.setObjectName('newName')
+        print(btn1.receivers(btn1.objectNameChanged))
 
 
 if __name__ == '__main__':
