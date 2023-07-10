@@ -13,7 +13,6 @@ class Window(QWidget):
         self.timer_id = None
         self.setup_ui()
 
-
     def setup_ui(self):
         self.label_clock()
 
