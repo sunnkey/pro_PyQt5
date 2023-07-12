@@ -17,11 +17,22 @@ class Window(QWidget):
     def showEvent(self, e: QtGui.QShowEvent) -> None:
         print('窗口被打开了')
 
-    def moveEvent(self, e: QtGui.QMoveEvent) -> None:
-        print(e.pos())
+    # def moveEvent(self, e: QtGui.QMoveEvent) -> None:
+    #     print(e.pos())
+
+    def keyPressEvent(self, e: QtGui.QKeyEvent) -> None:
+        print(e.key())
+
+    def focusInEvent(self, e: QtGui.QFocusEvent) -> None:
+        print('获取焦点')
+        print(e.gotFocus())
+
+    def focusOutEvent(self, e: QtGui.QFocusEvent) -> None:
+        print('失去焦点')
 
     def setup_ui(self):
-        pass
+        label = QLabel(self)
+        label.setText('焦点获取')
 
 
 if __name__ == '__main__':
