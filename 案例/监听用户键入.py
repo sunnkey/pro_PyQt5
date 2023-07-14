@@ -17,6 +17,8 @@ class Window(QWidget):
     def keyPressEvent(self, e: QtGui.QKeyEvent) -> None:
         if e.key() == Qt.Key_NumLock:
             print('ok!')
+        if e.modifiers() == Qt.ControlModifier | Qt.ShiftModifier and e.key() == Qt.Key_S:
+            print('按下了ctrl+shift+s')
 
 
 if __name__ == '__main__':
