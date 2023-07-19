@@ -15,7 +15,7 @@ class MyQLabel(QLabel):
         elif self.mode == 2:
             self.parent.setWindowState(Qt.WindowMaximized)
         elif self.mode == 3:
-            self.parent.setWindowState(Qt.WindowFullScreen)
+            self.parent.setWindowState(Qt.CustomizeWindowHint)
 
 
 class Window(QWidget):
@@ -24,6 +24,7 @@ class Window(QWidget):
         self.setWindowTitle('')
         self.resize(500, 500)
         self.move(400, 400)
+        self.setWindowFlags(Qt.WindowMaximizeButtonHint)
         self.setup_ui()
 
     def setup_ui(self):
