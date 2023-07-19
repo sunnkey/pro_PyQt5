@@ -42,6 +42,7 @@ class Window(QWidget):
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setup_ui()
 
+    # 槽函数区
     def slot_max_normal_window(self):
         if self.isMaximized():
             print(1)
@@ -52,17 +53,21 @@ class Window(QWidget):
             self.max_normal_button.setText('恢复')
             self.showMaximized()
 
+    # 重构区
+    # 重构鼠标按下事件
     def mousePressEvent(self, e: QtGui.QMouseEvent) -> None:
         self.origin_x = self.x()
         self.origin_y = self.y()
         self.mouse_x = e.globalX()
         self.mouse_y = e.globalY()
 
+    # 重构鼠标移动事件
     def mouseMoveEvent(self, e: QtGui.QMouseEvent) -> None:
         move_x = e.globalX() - self.mouse_x
         move_y = e.globalY() - self.mouse_y
         self.move(self.origin_x + move_x, self.origin_y + move_y)
 
+    # 配置窗口
     def setup_ui(self):
         self.min_button = QPushButton(self)
         self.min_button.setText('最小化')
