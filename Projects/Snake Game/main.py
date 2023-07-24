@@ -11,10 +11,9 @@ class SnakeGame(QMainWindow):
         self.game_board = GameBoard()
         self.setCentralWidget(self.game_board)
         # 初始化游戏
-        self.init_game()
 
     def initUI(self):
-        self.setGeometry(500, 500, 500, 500)
+        self.setGeometry(1500, 500, 500, 500)
         self.setWindowTitle('Snake Game')
         self.show()
 
