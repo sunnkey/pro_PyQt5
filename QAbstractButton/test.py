@@ -13,6 +13,7 @@ class Window(QWidget):
     def setup_ui(self):
         button = QPushButton(self)
         button.setText('1111')
+        print(button.text())
 
 
 if __name__ == '__main__':
