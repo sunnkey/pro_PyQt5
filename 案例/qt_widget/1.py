@@ -18,7 +18,7 @@ class Window(QWidget):
         self.test_q_object()
 
     def test_q_object(self):
-        with open('../object.qss') as f:
+        with open('../../object.qss') as f:
             qApp.setStyleSheet(f.read())
         label1 = QLabel(self)
         label1.setText('第一个label')

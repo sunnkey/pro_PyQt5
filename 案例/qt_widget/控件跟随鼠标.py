@@ -14,7 +14,7 @@ class Window(QWidget):
         self.move(400, 400)
         self.setMouseTracking(True)
         self.label = None
-        self.mouse_picture_path = '../source/images/add.png'
+        self.mouse_picture_path = '../../source/images/add.png'
         self.cursor = self.my_cursor(self.mouse_picture_path)
         self.setCursor(self.cursor)
         self.setup_ui()
