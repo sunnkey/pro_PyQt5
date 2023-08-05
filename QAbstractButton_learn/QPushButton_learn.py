@@ -22,14 +22,14 @@ class Window(QWidget):
         # 创建menu对象
         self.menu = QMenu()
         # 创建action对象
-        action1 = QAction()
-        action2 = QAction()
-        action1.setText('新建')
-        action2.setText('打开')
-        action1.setIcon(QIcon('../source/images/add.png'))
+        action_new = QAction()
+        action_open = QAction()
+        action_new.setText('新建')
+        action_open.setText('打开')
+        action_new.setIcon(QIcon('../source/images/add.png'))
         # 将action对象添加到menu对象中
-        self.menu.addAction(action1)
-        self.menu.addAction(action2)
+        self.menu.addAction(action_new)
+        self.menu.addAction(action_open)
 
         # 将menu添加到button中
         self.button.setMenu(self.menu)
