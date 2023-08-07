@@ -14,8 +14,12 @@ class Window(QWidget):
 
     def setup_ui(self):
         self.button_male = QRadioButton('男', self)
+        self.button_male.setIcon(QIcon('../source/images/add.png'))
+        self.button_male.setChecked(True)
+        self.button_male.setShortcut('Alt+m')
         self.button_female = QRadioButton('女', self)
         self.button_female.move(0, 50)
+        self.button_female.setShortcut('Alt+f')
 
 
 if __name__ == '__main__':
