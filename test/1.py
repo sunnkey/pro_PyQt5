@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+list_str = ['a', 'b', 'cd', 'ef']
 
-a = QLabel()
-a.show()
+for index, st in enumerate(list_str):
+    print(index, st)

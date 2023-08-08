@@ -23,8 +23,15 @@ class Window(QWidget):
         button_female = QRadioButton('Female', self)
         button_female.move(110, 50)
         sex_button_group = QButtonGroup(self)
-        sex_button_group.addButton(button_male)
-        sex_button_group.addButton(button_female)
+        sex_button_group.addButton(button_male, 1)
+        sex_button_group.addButton(button_female, 2)
+        sex_button_group.button(1).setChecked(True)
+        sex_button_group.setExclusive(False)
+        sex_button_group.buttonClicked.connect(self.sex_clicked)
+
+    def sex_clicked(self):
+        sender = self.sender()
+        print(sender.id(sender.checkedButton()))
 
 
 if __name__ == '__main__':
