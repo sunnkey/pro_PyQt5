@@ -43,11 +43,20 @@ class Window(QWidget):
     def setup_ui(self):
         layout = QVBoxLayout()
         info = QLabel('sz, sun')
+        # 用户名控件
         self.line_username = QLineEdit(self)
         self.line_username.setPlaceholderText('用户名')
         self.line_username.setClearButtonEnabled(True)
+        # 密码控件
         self.line_password = QLineEdit(self)
         self.line_password.setPlaceholderText('密码')
+        self.line_password.setClearButtonEnabled(True)
+        self.line_password.setEchoMode(2)
+        toggle_action = QAction(self.line_password)
+        self.line_password.addAction(toggle_action, 1)
+        toggle_action.setIcon(QIcon('../../source/images/show.png'))
+        toggle_action.triggered.connect(self.slot_toggle_show)
+        # 提交按钮控件
         self.button_submit = QPushButton('Submit', self)
         self.button_submit.clicked.connect(self.slot_submit)
         self.result = QLabel('wait', self)
@@ -77,10 +86,19 @@ class Window(QWidget):
             self.line_username.setText('')
             self.result.setText('All error!')
 
+    def slot_toggle_show(self):
+        sender = self.sender()
+        state = sender.parent().echoMode()
+        if state == 0:
+            sender.setIcon(QIcon('../../source/images/show.png'))
+            sender.parent().setEchoMode(2)
+        if state == 2:
+            sender.setIcon(QIcon('../../source/images/no_show.png'))
+            sender.parent().setEchoMode(0)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     window = Window()
     window.show()
-    print(CheckAccount.check_login('sz', 'sun'))
     sys.exit(app.exec())
