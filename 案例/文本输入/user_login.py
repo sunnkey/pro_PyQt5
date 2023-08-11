@@ -8,6 +8,24 @@
 
 from PyQt5.Qt import *
 import sys
+import typing
+
+
+class UserLoginQValidator(QValidator):
+    def validate(self, text: str, pos: int) -> typing.Tuple['QValidator.State', str, int]:
+        # return QValidator.Acceptable, text, pos
+        if 3 <= len(text) <= 8 or len(text) == 0:
+            print('合格长度')
+            return QValidator.Acceptable, text, pos
+        elif len(text) < 3:
+            print('长度不够，可以更改')
+            return QValidator.Intermediate, text, pos
+        else:
+            print('长度超出')
+            return QValidator.Invalid, text, pos
+
+    def fixup(self, text: str) -> str:
+        return text.ljust(3, '-')
 
 
 class CheckAccount:
@@ -47,6 +65,13 @@ class Window(QWidget):
         self.line_username = QLineEdit(self)
         self.line_username.setPlaceholderText('用户名')
         self.line_username.setClearButtonEnabled(True)
+        # 添加自动完成器
+        completer = QCompleter(['sun', 'sun2', 'han'], self.line_username)
+        self.line_username.setCompleter(completer)
+        # 添加用户验证器
+        # validator = UserLoginQValidator()
+        validator = QIntValidator(10, 888)
+        self.line_username.setValidator(validator)
         # 密码控件
         self.line_password = QLineEdit(self)
         self.line_password.setPlaceholderText('密码')
@@ -72,7 +97,6 @@ class Window(QWidget):
         username = self.line_username.text()
         password = self.line_password.text()
         result = CheckAccount.check_login(username, password)
-        print(result)
         if result == CheckAccount.SUCCESS:
             self.result.setText('ok')
         if result == 2:
