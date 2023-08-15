@@ -19,6 +19,8 @@ class Window(QWidget):
         frame.setMidLineWidth(20)
         frame.move(200, 200)
         frame.resize(300, 300)
+        frame.setFrameRect(QRect(100, 100, 300, 300))
+        print(frame.frameRect())
         button = QPushButton(frame)
         button.resize(120, 80)
         button.setText('Push Button')
