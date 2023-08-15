@@ -10,7 +10,13 @@ class Window(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
-        pass
+        text_area = QTextEdit(self)
+        text_area.setGeometry(50, 50, 200, 200)
+
+        horizontal_scrollbar = QScrollBar(self)
+        text_area.setHorizontalScrollBar(horizontal_scrollbar)
+        text_area.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
+        text_area.setLineWrapMode(QTextEdit.NoWrap)
 
 
 if __name__ == '__main__':
