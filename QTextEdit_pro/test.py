@@ -36,8 +36,8 @@ class Window(QWidget):
         cursor.movePosition(QTextCursor.End)
         tc = QTextCharFormat()
         tc.setToolTip('我是样式')
-        tc.setFontFamily()
-        cursor.insertText('222')
+        tc.setFontPointSize(30)
+        cursor.insertText('222', tc)
 
 
 if __name__ == '__main__':
