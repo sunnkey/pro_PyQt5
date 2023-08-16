@@ -31,6 +31,16 @@ class Window(QWidget):
         text.clear()
 
     def insert_text(self):
+        
+        return None
+        print(1)
+        cursor = self.findChild(QTextEdit, 'text_area').textCursor()
+        tif = QTextImageFormat()
+        tif.setName('../source/images/game_player.png')
+        tif.setWidth(850)
+        tif.setHeight(850)
+        cursor.insertImage(tif)
+        return None
         text = self.findChild(QTextEdit, 'text_area')
         cursor = text.textCursor()
         cursor.movePosition(QTextCursor.End)
