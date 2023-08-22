@@ -11,15 +11,10 @@ class Window(QWidget):
 
     def setup_ui(self):
         text_area = QTextEdit(self)
-        # ttf = QTextTableFormat()
-        # ttf.setAlignment(Qt.AlignCenter)
-        # ttf.setColumnWidthConstraints((QTextLength(1, 20), QTextLength(1, 30), QTextLength(1, 20), QTextLength(1, 20)))
-        # cursor = text_area.textCursor()
-        # cursor.insertTable(3, 4, ttf)
         cursor = text_area.textCursor()
-        cursor.insertTable(3, 4)
         ttf = QTextTableFormat()
         ttf.setColumnWidthConstraints(QTextLength(1, 30) for col in range(4))
+        cursor.insertTable(3, 4, ttf)
 
 
 if __name__ == '__main__':
