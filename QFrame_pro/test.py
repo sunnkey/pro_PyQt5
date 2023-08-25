@@ -26,6 +26,7 @@ class Window(QWidget):
         button.setText('Push Button')
         layout.addWidget(button)
         frame.setLayout(layout)
+        print(QFontDialog.getFont())
 
 
 if __name__ == '__main__':
