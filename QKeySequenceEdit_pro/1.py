@@ -11,10 +11,15 @@ class Window(QWidget):
 
     def setup_ui(self):
         short_cut_keys = QKeySequenceEdit(self)
+        keys1 = QKeySequence(Qt.CTRL + Qt.Key_C, Qt.CTRL + Qt.Key_V)
+        keys2 = QKeySequence().Cut
+        keys3 = QKeySequence().Save
+        short_cut_keys.setKeySequence(keys3)
+
         button = QPushButton('获取快捷键', self)
         button.move(20, 100)
-        button.clicked.connect(lambda: print(self.findChild(QKeySequenceEdit).keySequence()))
-        QKeySequence
+        button.clicked.connect(lambda: print(self.findChild(QKeySequenceEdit).keySequence().toString()))
+        short_cut_keys.editingFinished.connect(lambda: print(0))
 
 
 if __name__ == '__main__':
