@@ -1,27 +1,39 @@
-from PyQt5.QtWidgets import QApplication, QAbstractSpinBox
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QApplication, QAbstractSpinBox, QVBoxLayout, QWidget
 import sys
 
 
-class MyAbstractSpinBox(QAbstractSpinBox):
-    def __init__(self, parent=None, num='0', step=1, *args, **kwargs):
-        super(MyAbstractSpinBox, self).__init__(parent)
-        self._step = step
-        self.lineEdit().setText(num)
+class MySpinBox(QAbstractSpinBox):
+    valueChanged = pyqtSignal(int)  # 自定义信号
 
-    def stepEnabled(self) -> 'QAbstractSpinBox.StepEnabled':
-        return QAbstractSpinBox.StepUpEnabled | QAbstractSpinBox.StepDownEnabled
+    def __init__(self, parent=None):
+        super(MySpinBox, self).__init__(parent)
 
-    def stepBy(self, steps: int) -> None:
-        current_num = int(self.text()) + self._step * steps
-        self.lineEdit().setText(str(current_num))
+    def stepBy(self, steps):
+        self.setValue(self.value() + steps)
+
+    def setValue(self, value):
+        super().setValue(value)
+        self.valueChanged.emit(value)  # 在值变化时发射信号
+
+
+class MainApp(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        layout = QVBoxLayout()
+        spin_box = MySpinBox()
+        layout.addWidget(spin_box)
+        self.setLayout(layout)
+
+        spin_box.valueChanged.connect(self.value_changed)
+
+    def value_changed(self, new_value):
+        print("Value changed:", new_value)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    spin_box = MyAbstractSpinBox(step=5)
-
-    spin_box.setButtonSymbols(QAbstractSpinBox.NoButtons)  # 先设置为 NoButtons 样式
-    spin_box.setButtonSymbols(QAbstractSpinBox.PlusMinus)  # 设置加号和减号按钮文本
-
-    spin_box.show()
+    main_app = MainApp()
+    main_app.show()
     sys.exit(app.exec_())
