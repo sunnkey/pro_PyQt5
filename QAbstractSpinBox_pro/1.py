@@ -23,12 +23,20 @@ class Window(QWidget):
         self.setGeometry(1400, 600, 600, 600)
         self.setWindowTitle('')
         self.setup_ui()
+        self.button1 = None
+        self.button2 = None
 
     def setup_ui(self):
         spin_box = MyAbstractSpinBox(self)
         spin_box.setAccelerated(True)
+        spin_box.setFrame(True)
         spin_box.move(100, 100)
         spin_box.resize(80, 30)
+        self.button1 = QPushButton('cancel borders', self)
+        self.button2 = QPushButton('show borders', self)
+        self.button2.move(0, 60)
+        self.button1.clicked.connect(lambda: spin_box.setFrame(False))
+        self.button2.clicked.connect(lambda: spin_box.setFrame(True))
 
 
 if __name__ == '__main__':
