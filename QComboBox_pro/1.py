@@ -31,7 +31,6 @@ class Window(QWidget):
         # 获取信息
         button.clicked.connect(lambda: print(self.findChild(QComboBox).itemData(0)))
         # 信号
-        combo_box.highlighted
 
 
 if __name__ == '__main__':
