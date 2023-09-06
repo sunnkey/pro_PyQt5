@@ -1,12 +1,3 @@
-d = {
-    '东城': '001',
-    '西城': '002',
-    '朝阳': '003',
-    '丰台': '004',
-}
+from urllib.parse import urlparse
 
-for i in d:
-    print(i)
-
-for i in d.values():
-    print(i)
+url_str = 'file:///D:/SynologyDrive/source/python/pro_PyQt5/QDialog_pro/1.py'
