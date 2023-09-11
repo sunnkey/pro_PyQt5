@@ -10,9 +10,8 @@ class Window(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
-        QErrorMessage.qtHandler()
-        qDebug('Hello!')
-        qWarning('waring!')
+        progress_dialog = QProgressDialog(self)
+        # progress_dialog.show()
 
 
 if __name__ == '__main__':
