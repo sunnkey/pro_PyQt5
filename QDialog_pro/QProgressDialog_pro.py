@@ -13,8 +13,6 @@ class Window(QWidget):
         progress_dialog = QProgressDialog(self)
         # progress_dialog.show()
 
-    QMessageBox.ButtonRole
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
