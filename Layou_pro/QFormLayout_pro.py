@@ -50,7 +50,7 @@ class Window(QWidget):
         layout_form.addRow(submit)
 
         # 根据标签修改
-
+        layout_form.labelForField(line_edit_info).setText('Info')
 
     def slot_submit(self):
         label_password = self.findChild(QLabel, 'label_password')
