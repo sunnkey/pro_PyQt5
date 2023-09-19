@@ -1,3 +1,7 @@
 QLabel {
     background-color: cyan;
 }
+
+Window {
+    background-color: yellow;
+}

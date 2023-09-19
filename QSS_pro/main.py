@@ -19,11 +19,10 @@ class Window(QWidget):
 
 
 if __name__ == '__main__':
-    with open('QSS/test.qss', 'r') as f:
-        content = f.read()
-        print(content)
-        app = QApplication(sys.argv)
-        app.setStyleSheet(content)  # 修改此处
-        window = Window()
-        window.show()
+    app = QApplication(sys.argv)
+    from Tools.Tool import QSSTool
+
+    QSSTool.setQssToObject('QSS/test.qss', app)
+    window = Window()
+    window.show()
     sys.exit(app.exec())
