@@ -10,12 +10,13 @@ class Window(QWidget):
         self.setup_ui()
 
     def setup_ui(self):
-        layout = QVBoxLayout()
-        self.setLayout(layout)
-
-        for i in range(5):
-            label = QLabel(f'Label_{i}', self)
-            layout.addWidget(label)
+        pass
+        # layout = QVBoxLayout()
+        # self.setLayout(layout)
+        #
+        # for i in range(5):
+        #     label = QLabel(f'Label_{i}', self)
+        #     layout.addWidget(label)
 
 
 if __name__ == '__main__':
